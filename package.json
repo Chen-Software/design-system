@@ -2,6 +2,7 @@
   "name": "@chen/design-system",
   "version": "0.0.1",
   "description": "A modern design system built with PandaCSS for styling and ParkUI as the foundational component framework. Perfect for building consistent, scalable, and maintainable UIs.",
+  "license": "UNLICENSED",
   "private": true,
   "files": [
     "types",
