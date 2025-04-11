@@ -1,0 +1,10 @@
+{
+  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "nodenext",
+    "module": "NodeNext"
+  },
+  "references": []
+}
