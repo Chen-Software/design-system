@@ -1,6 +1,18 @@
 {
   "name": "@chen/design-system",
   "version": "0.0.1",
+  "description": "A modern design system built with PandaCSS for styling and ParkUI as the foundational component framework. Perfect for building consistent, scalable, and maintainable UIs.",
+  "homepage": "https://git.chen.so/design-system",
+  "bugs": {
+    "url": "https://git.chen.so/design-system/issues",
+    "email": "design-system+support@chen.software"
+  },
+  "author": "Yumin Chen <yumin@chen.so> (https://yumin.chen.so/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chen-Software/design-system.git"
+  },
+  "license": "UNLICENSED",
   "private": true,
   "files": [
     "types",
