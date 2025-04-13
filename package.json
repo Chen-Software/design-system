@@ -8,6 +8,10 @@
     "email": "design-system+support@chen.software"
   },
   "author": "Yumin Chen <yumin@chen.so> (https://yumin.chen.so/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chen-Software/design-system.git"
+  },
   "license": "UNLICENSED",
   "private": true,
   "files": [
