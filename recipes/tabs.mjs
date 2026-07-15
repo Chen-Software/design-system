@@ -5,152 +5,7 @@ const tabsDefaultVariants = {
   "size": "md",
   "variant": "line"
 }
-const tabsCompoundVariants = [
-  {
-    "size": "sm",
-    "variant": "enclosed",
-    "css": {
-      "list": {
-        "height": "10"
-      },
-      "trigger": {
-        "h": "8",
-        "minW": "8",
-        "textStyle": "sm",
-        "px": "3"
-      },
-      "content": {
-        "p": "3.5"
-      }
-    }
-  },
-  {
-    "size": "md",
-    "variant": "enclosed",
-    "css": {
-      "list": {
-        "height": "11"
-      },
-      "trigger": {
-        "h": "9",
-        "minW": "9",
-        "textStyle": "sm",
-        "px": "3.5"
-      },
-      "content": {
-        "p": "4"
-      }
-    }
-  },
-  {
-    "size": "lg",
-    "variant": "enclosed",
-    "css": {
-      "list": {
-        "height": "12"
-      },
-      "trigger": {
-        "h": "10",
-        "minW": "10",
-        "textStyle": "sm",
-        "px": "4"
-      },
-      "content": {
-        "p": "4.5"
-      }
-    }
-  },
-  {
-    "size": "sm",
-    "variant": "outline",
-    "css": {
-      "trigger": {
-        "h": "9",
-        "minW": "9",
-        "textStyle": "sm",
-        "px": "3.5"
-      },
-      "content": {
-        "p": "3.5"
-      }
-    }
-  },
-  {
-    "size": "md",
-    "variant": "outline",
-    "css": {
-      "trigger": {
-        "h": "10",
-        "minW": "10",
-        "textStyle": "sm",
-        "px": "4"
-      },
-      "content": {
-        "p": "4"
-      }
-    }
-  },
-  {
-    "size": "lg",
-    "variant": "outline",
-    "css": {
-      "trigger": {
-        "h": "11",
-        "minW": "11",
-        "textStyle": "md",
-        "px": "4.5"
-      },
-      "content": {
-        "p": "4.5"
-      }
-    }
-  },
-  {
-    "size": "sm",
-    "variant": "line",
-    "css": {
-      "trigger": {
-        "fontSize": "sm",
-        "h": "9",
-        "minW": "9",
-        "px": "2.5"
-      },
-      "content": {
-        "pt": "3"
-      }
-    }
-  },
-  {
-    "size": "md",
-    "variant": "line",
-    "css": {
-      "trigger": {
-        "fontSize": "md",
-        "h": "10",
-        "minW": "10",
-        "px": "3"
-      },
-      "content": {
-        "pt": "4"
-      }
-    }
-  },
-  {
-    "size": "lg",
-    "variant": "line",
-    "css": {
-      "trigger": {
-        "px": "3.5",
-        "h": "11",
-        "minW": "11",
-        "fontSize": "md"
-      },
-      "content": {
-        "pt": "5"
-      }
-    }
-  }
-]
+const tabsCompoundVariants = []
 
 const tabsSlotNames = [
   [
@@ -181,8 +36,9 @@ const tabsFn = memo((props = {}) => {
 })
 
 const tabsVariantKeys = [
+  "size",
   "variant",
-  "size"
+  "fitted"
 ]
 const getVariantProps = (variants) => ({ ...tabsDefaultVariants, ...compact(variants) })
 
@@ -190,17 +46,22 @@ export const tabs = /* @__PURE__ */ Object.assign(tabsFn, {
   __recipe__: false,
   __name__: 'tabs',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: tabsVariantKeys,
   variantMap: {
-  "variant": [
-    "enclosed",
-    "line",
-    "outline"
-  ],
   "size": [
+    "xs",
     "sm",
     "md",
     "lg"
+  ],
+  "variant": [
+    "line",
+    "subtle",
+    "enclosed"
+  ],
+  "fitted": [
+    "true"
   ]
 },
   splitVariantProps(props) {

@@ -1,7 +1,9 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const paginationDefaultVariants = {}
+const paginationDefaultVariants = {
+  "colorPalette": "gray"
+}
 const paginationCompoundVariants = []
 
 const paginationSlotNames = [
@@ -24,6 +26,14 @@ const paginationSlotNames = [
   [
     "nextTrigger",
     "pagination__nextTrigger"
+  ],
+  [
+    "firstTrigger",
+    "pagination__firstTrigger"
+  ],
+  [
+    "lastTrigger",
+    "pagination__lastTrigger"
   ]
 ]
 const paginationSlotFns = /* @__PURE__ */ paginationSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, paginationDefaultVariants, getSlotCompoundVariant(paginationCompoundVariants, slotName))])
@@ -39,6 +49,7 @@ export const pagination = /* @__PURE__ */ Object.assign(paginationFn, {
   __recipe__: false,
   __name__: 'pagination',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: paginationVariantKeys,
   variantMap: {},
   splitVariantProps(props) {

@@ -1,105 +1,115 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const datePickerDefaultVariants = {}
+const datePickerDefaultVariants = {
+  "colorPalette": "blue"
+}
 const datePickerCompoundVariants = []
 
 const datePickerSlotNames = [
   [
-    "root",
-    "datePicker__root"
-  ],
-  [
-    "label",
-    "datePicker__label"
-  ],
-  [
     "clearTrigger",
-    "datePicker__clearTrigger"
+    "date-picker__clearTrigger"
   ],
   [
     "content",
-    "datePicker__content"
+    "date-picker__content"
   ],
   [
     "control",
-    "datePicker__control"
+    "date-picker__control"
   ],
   [
     "input",
-    "datePicker__input"
+    "date-picker__input"
+  ],
+  [
+    "label",
+    "date-picker__label"
   ],
   [
     "monthSelect",
-    "datePicker__monthSelect"
+    "date-picker__monthSelect"
   ],
   [
     "nextTrigger",
-    "datePicker__nextTrigger"
+    "date-picker__nextTrigger"
   ],
   [
     "positioner",
-    "datePicker__positioner"
-  ],
-  [
-    "prevTrigger",
-    "datePicker__prevTrigger"
-  ],
-  [
-    "rangeText",
-    "datePicker__rangeText"
-  ],
-  [
-    "table",
-    "datePicker__table"
-  ],
-  [
-    "tableBody",
-    "datePicker__tableBody"
-  ],
-  [
-    "tableCell",
-    "datePicker__tableCell"
-  ],
-  [
-    "tableCellTrigger",
-    "datePicker__tableCellTrigger"
-  ],
-  [
-    "tableHead",
-    "datePicker__tableHead"
-  ],
-  [
-    "tableHeader",
-    "datePicker__tableHeader"
-  ],
-  [
-    "tableRow",
-    "datePicker__tableRow"
-  ],
-  [
-    "trigger",
-    "datePicker__trigger"
-  ],
-  [
-    "viewTrigger",
-    "datePicker__viewTrigger"
-  ],
-  [
-    "viewControl",
-    "datePicker__viewControl"
-  ],
-  [
-    "yearSelect",
-    "datePicker__yearSelect"
+    "date-picker__positioner"
   ],
   [
     "presetTrigger",
-    "datePicker__presetTrigger"
+    "date-picker__presetTrigger"
+  ],
+  [
+    "prevTrigger",
+    "date-picker__prevTrigger"
+  ],
+  [
+    "rangeText",
+    "date-picker__rangeText"
+  ],
+  [
+    "root",
+    "date-picker__root"
+  ],
+  [
+    "table",
+    "date-picker__table"
+  ],
+  [
+    "tableBody",
+    "date-picker__tableBody"
+  ],
+  [
+    "tableCell",
+    "date-picker__tableCell"
+  ],
+  [
+    "tableCellTrigger",
+    "date-picker__tableCellTrigger"
+  ],
+  [
+    "tableHead",
+    "date-picker__tableHead"
+  ],
+  [
+    "tableHeader",
+    "date-picker__tableHeader"
+  ],
+  [
+    "tableRow",
+    "date-picker__tableRow"
+  ],
+  [
+    "trigger",
+    "date-picker__trigger"
   ],
   [
     "view",
-    "datePicker__view"
+    "date-picker__view"
+  ],
+  [
+    "viewControl",
+    "date-picker__viewControl"
+  ],
+  [
+    "weekNumber",
+    "date-picker__weekNumber"
+  ],
+  [
+    "viewTrigger",
+    "date-picker__viewTrigger"
+  ],
+  [
+    "yearSelect",
+    "date-picker__yearSelect"
+  ],
+  [
+    "valueText",
+    "date-picker__valueText"
   ]
 ]
 const datePickerSlotFns = /* @__PURE__ */ datePickerSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, datePickerDefaultVariants, getSlotCompoundVariant(datePickerCompoundVariants, slotName))])
@@ -108,15 +118,29 @@ const datePickerFn = memo((props = {}) => {
   return Object.fromEntries(datePickerSlotFns.map(([slotName, slotFn]) => [slotName, slotFn.recipeFn(props)]))
 })
 
-const datePickerVariantKeys = []
+const datePickerVariantKeys = [
+  "colorPalette"
+]
 const getVariantProps = (variants) => ({ ...datePickerDefaultVariants, ...compact(variants) })
 
 export const datePicker = /* @__PURE__ */ Object.assign(datePickerFn, {
   __recipe__: false,
   __name__: 'datePicker',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: datePickerVariantKeys,
-  variantMap: {},
+  variantMap: {
+  "colorPalette": [
+    "blue",
+    "green",
+    "red",
+    "orange",
+    "gray",
+    "cyan",
+    "amber",
+    "purple"
+  ]
+},
   splitVariantProps(props) {
     return splitProps(props, datePickerVariantKeys)
   },

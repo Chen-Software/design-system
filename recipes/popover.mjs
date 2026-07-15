@@ -6,6 +6,10 @@ const popoverCompoundVariants = []
 
 const popoverSlotNames = [
   [
+    "anchor",
+    "popover__anchor"
+  ],
+  [
     "arrow",
     "popover__arrow"
   ],
@@ -14,12 +18,16 @@ const popoverSlotNames = [
     "popover__arrowTip"
   ],
   [
-    "anchor",
-    "popover__anchor"
+    "closeTrigger",
+    "popover__closeTrigger"
   ],
   [
-    "trigger",
-    "popover__trigger"
+    "content",
+    "popover__content"
+  ],
+  [
+    "description",
+    "popover__description"
   ],
   [
     "indicator",
@@ -30,20 +38,24 @@ const popoverSlotNames = [
     "popover__positioner"
   ],
   [
-    "content",
-    "popover__content"
-  ],
-  [
     "title",
     "popover__title"
   ],
   [
-    "description",
-    "popover__description"
+    "trigger",
+    "popover__trigger"
   ],
   [
-    "closeTrigger",
-    "popover__closeTrigger"
+    "header",
+    "popover__header"
+  ],
+  [
+    "body",
+    "popover__body"
+  ],
+  [
+    "footer",
+    "popover__footer"
   ]
 ]
 const popoverSlotFns = /* @__PURE__ */ popoverSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, popoverDefaultVariants, getSlotCompoundVariant(popoverCompoundVariants, slotName))])
@@ -59,6 +71,7 @@ export const popover = /* @__PURE__ */ Object.assign(popoverFn, {
   __recipe__: false,
   __name__: 'popover',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: popoverVariantKeys,
   variantMap: {},
   splitVariantProps(props) {

@@ -4,22 +4,29 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface TagsInputVariant {
   /**
+ * @default "outline"
+ */
+variant: "outline" | "subtle" | "surface"
+/**
  * @default "md"
  */
-size: "md"
+size: "xs" | "sm" | "md" | "lg"
 }
 
 type TagsInputVariantMap = {
   [key in keyof TagsInputVariant]: Array<TagsInputVariant[key]>
 }
 
+type TagsInputSlot = "root" | "label" | "control" | "input" | "clearTrigger" | "item" | "itemPreview" | "itemText" | "itemInput" | "itemDeleteTrigger"
+
 export type TagsInputVariantProps = {
   [key in keyof TagsInputVariant]?: ConditionalValue<TagsInputVariant[key]> | undefined
 }
 
 export interface TagsInputRecipe {
+  __slot: TagsInputSlot
   __type: TagsInputVariantProps
-  (props?: TagsInputVariantProps): Pretty<Record<"root" | "label" | "control" | "input" | "clearTrigger" | "item" | "itemPreview" | "itemInput" | "itemText" | "itemDeleteTrigger", string>>
+  (props?: TagsInputVariantProps): Pretty<Record<TagsInputSlot, string>>
   raw: (props?: TagsInputVariantProps) => TagsInputVariantProps
   variantMap: TagsInputVariantMap
   variantKeys: Array<keyof TagsInputVariant>

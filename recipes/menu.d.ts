@@ -6,20 +6,23 @@ interface MenuVariant {
   /**
  * @default "md"
  */
-size: "xs" | "sm" | "md" | "lg"
+size: "xs" | "sm" | "md" | "lg" | "xl"
 }
 
 type MenuVariantMap = {
   [key in keyof MenuVariant]: Array<MenuVariant[key]>
 }
 
+type MenuSlot = "arrow" | "arrowTip" | "content" | "contextTrigger" | "indicator" | "item" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "separator" | "trigger" | "triggerItem"
+
 export type MenuVariantProps = {
   [key in keyof MenuVariant]?: ConditionalValue<MenuVariant[key]> | undefined
 }
 
 export interface MenuRecipe {
+  __slot: MenuSlot
   __type: MenuVariantProps
-  (props?: MenuVariantProps): Pretty<Record<"arrow" | "arrowTip" | "content" | "contextTrigger" | "indicator" | "item" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "positioner" | "separator" | "trigger" | "triggerItem", string>>
+  (props?: MenuVariantProps): Pretty<Record<MenuSlot, string>>
   raw: (props?: MenuVariantProps) => MenuVariantProps
   variantMap: MenuVariantMap
   variantKeys: Array<keyof MenuVariant>

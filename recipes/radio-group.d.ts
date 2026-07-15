@@ -4,6 +4,10 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface RadioGroupVariant {
   /**
+ * @default "solid"
+ */
+variant: "solid" | "outline"
+/**
  * @default "md"
  */
 size: "sm" | "md" | "lg"
@@ -13,13 +17,16 @@ type RadioGroupVariantMap = {
   [key in keyof RadioGroupVariant]: Array<RadioGroupVariant[key]>
 }
 
+type RadioGroupSlot = "root" | "label" | "item" | "itemText" | "itemControl" | "indicator"
+
 export type RadioGroupVariantProps = {
   [key in keyof RadioGroupVariant]?: ConditionalValue<RadioGroupVariant[key]> | undefined
 }
 
 export interface RadioGroupRecipe {
+  __slot: RadioGroupSlot
   __type: RadioGroupVariantProps
-  (props?: RadioGroupVariantProps): Pretty<Record<"root" | "label" | "item" | "itemText" | "itemControl" | "indicator", string>>
+  (props?: RadioGroupVariantProps): Pretty<Record<RadioGroupSlot, string>>
   raw: (props?: RadioGroupVariantProps) => RadioGroupVariantProps
   variantMap: RadioGroupVariantMap
   variantKeys: Array<keyof RadioGroupVariant>

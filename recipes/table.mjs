@@ -21,8 +21,8 @@ const tableSlotNames = [
     "table__cell"
   ],
   [
-    "footer",
-    "table__footer"
+    "foot",
+    "table__foot"
   ],
   [
     "head",
@@ -49,6 +49,10 @@ const tableFn = memo((props = {}) => {
 
 const tableVariantKeys = [
   "variant",
+  "striped",
+  "interactive",
+  "columnBorder",
+  "stickyHeader",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...tableDefaultVariants, ...compact(variants) })
@@ -57,14 +61,26 @@ export const table = /* @__PURE__ */ Object.assign(tableFn, {
   __recipe__: false,
   __name__: 'table',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: tableVariantKeys,
   variantMap: {
   "variant": [
-    "outline",
+    "surface",
     "plain"
   ],
+  "striped": [
+    "true"
+  ],
+  "interactive": [
+    "true"
+  ],
+  "columnBorder": [
+    "true"
+  ],
+  "stickyHeader": [
+    "true"
+  ],
   "size": [
-    "sm",
     "md"
   ]
 },

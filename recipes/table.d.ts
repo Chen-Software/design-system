@@ -6,24 +6,31 @@ interface TableVariant {
   /**
  * @default "plain"
  */
-variant: "outline" | "plain"
+variant: "surface" | "plain"
+striped: boolean
+interactive: boolean
+columnBorder: boolean
+stickyHeader: boolean
 /**
  * @default "md"
  */
-size: "sm" | "md"
+size: "md"
 }
 
 type TableVariantMap = {
   [key in keyof TableVariant]: Array<TableVariant[key]>
 }
 
+type TableSlot = "root" | "body" | "cell" | "foot" | "head" | "header" | "row" | "caption"
+
 export type TableVariantProps = {
   [key in keyof TableVariant]?: ConditionalValue<TableVariant[key]> | undefined
 }
 
 export interface TableRecipe {
+  __slot: TableSlot
   __type: TableVariantProps
-  (props?: TableVariantProps): Pretty<Record<"root" | "body" | "cell" | "footer" | "head" | "header" | "row" | "caption", string>>
+  (props?: TableVariantProps): Pretty<Record<TableSlot, string>>
   raw: (props?: TableVariantProps) => TableVariantProps
   variantMap: TableVariantMap
   variantKeys: Array<keyof TableVariant>

@@ -4,22 +4,29 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ComboboxVariant {
   /**
+ * @default "outline"
+ */
+variant: "outline" | "surface" | "subtle"
+/**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+size: "xs" | "sm" | "md" | "lg" | "xl"
 }
 
 type ComboboxVariantMap = {
   [key in keyof ComboboxVariant]: Array<ComboboxVariant[key]>
 }
 
+type ComboboxSlot = "root" | "label" | "input" | "control" | "content" | "positioner" | "list" | "item" | "itemText" | "itemIndicator" | "itemGroup" | "itemGroupLabel" | "indicatorGroup" | "trigger" | "clearTrigger" | "empty"
+
 export type ComboboxVariantProps = {
   [key in keyof ComboboxVariant]?: ConditionalValue<ComboboxVariant[key]> | undefined
 }
 
 export interface ComboboxRecipe {
+  __slot: ComboboxSlot
   __type: ComboboxVariantProps
-  (props?: ComboboxVariantProps): Pretty<Record<"root" | "clearTrigger" | "content" | "control" | "input" | "item" | "itemGroup" | "itemGroupLabel" | "itemIndicator" | "itemText" | "label" | "list" | "positioner" | "trigger", string>>
+  (props?: ComboboxVariantProps): Pretty<Record<ComboboxSlot, string>>
   raw: (props?: ComboboxVariantProps) => ComboboxVariantProps
   variantMap: ComboboxVariantMap
   variantKeys: Array<keyof ComboboxVariant>

@@ -1,9 +1,25 @@
 import { memo, splitProps } from '../helpers.mjs';
 import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
-const skeletonFn = /* @__PURE__ */ createRecipe('skeleton', {}, [])
+const skeletonFn = /* @__PURE__ */ createRecipe('skeleton', {
+  "variant": "pulse",
+  "loading": true
+}, [])
 
-const skeletonVariantMap = {}
+const skeletonVariantMap = {
+  "loading": [
+    "true",
+    "false"
+  ],
+  "circle": [
+    "true"
+  ],
+  "variant": [
+    "pulse",
+    "shine",
+    "none"
+  ]
+}
 
 const skeletonVariantKeys = Object.keys(skeletonVariantMap)
 

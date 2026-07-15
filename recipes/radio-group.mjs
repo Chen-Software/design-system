@@ -2,6 +2,7 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const radioGroupDefaultVariants = {
+  "variant": "solid",
   "size": "md"
 }
 const radioGroupCompoundVariants = []
@@ -9,27 +10,27 @@ const radioGroupCompoundVariants = []
 const radioGroupSlotNames = [
   [
     "root",
-    "radioGroup__root"
+    "radio-group__root"
   ],
   [
     "label",
-    "radioGroup__label"
+    "radio-group__label"
   ],
   [
     "item",
-    "radioGroup__item"
+    "radio-group__item"
   ],
   [
     "itemText",
-    "radioGroup__itemText"
+    "radio-group__itemText"
   ],
   [
     "itemControl",
-    "radioGroup__itemControl"
+    "radio-group__itemControl"
   ],
   [
     "indicator",
-    "radioGroup__indicator"
+    "radio-group__indicator"
   ]
 ]
 const radioGroupSlotFns = /* @__PURE__ */ radioGroupSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, radioGroupDefaultVariants, getSlotCompoundVariant(radioGroupCompoundVariants, slotName))])
@@ -39,6 +40,7 @@ const radioGroupFn = memo((props = {}) => {
 })
 
 const radioGroupVariantKeys = [
+  "variant",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...radioGroupDefaultVariants, ...compact(variants) })
@@ -47,8 +49,13 @@ export const radioGroup = /* @__PURE__ */ Object.assign(radioGroupFn, {
   __recipe__: false,
   __name__: 'radioGroup',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: radioGroupVariantKeys,
   variantMap: {
+  "variant": [
+    "solid",
+    "outline"
+  ],
   "size": [
     "sm",
     "md",

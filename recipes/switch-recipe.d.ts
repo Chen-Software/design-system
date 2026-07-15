@@ -4,22 +4,29 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface SwitchRecipeVariant {
   /**
+ * @default "solid"
+ */
+variant: "solid"
+/**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+size: "xs" | "sm" | "md" | "lg"
 }
 
 type SwitchRecipeVariantMap = {
   [key in keyof SwitchRecipeVariant]: Array<SwitchRecipeVariant[key]>
 }
 
+type SwitchRecipeSlot = "root" | "control" | "thumb" | "label" | "indicator"
+
 export type SwitchRecipeVariantProps = {
   [key in keyof SwitchRecipeVariant]?: ConditionalValue<SwitchRecipeVariant[key]> | undefined
 }
 
 export interface SwitchRecipeRecipe {
+  __slot: SwitchRecipeSlot
   __type: SwitchRecipeVariantProps
-  (props?: SwitchRecipeVariantProps): Pretty<Record<"root" | "label" | "control" | "thumb", string>>
+  (props?: SwitchRecipeVariantProps): Pretty<Record<SwitchRecipeSlot, string>>
   raw: (props?: SwitchRecipeVariantProps) => SwitchRecipeVariantProps
   variantMap: SwitchRecipeVariantMap
   variantKeys: Array<keyof SwitchRecipeVariant>

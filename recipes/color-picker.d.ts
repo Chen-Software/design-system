@@ -3,20 +3,26 @@ import type { ConditionalValue } from '../types/index';
 import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ColorPickerVariant {
-  
+  /**
+ * @default "md"
+ */
+size: "sm" | "md" | "lg"
 }
 
 type ColorPickerVariantMap = {
   [key in keyof ColorPickerVariant]: Array<ColorPickerVariant[key]>
 }
 
+type ColorPickerSlot = "root" | "label" | "control" | "content" | "area" | "areaBackground" | "areaThumb" | "channelSlider" | "channelSliderLabel" | "channelSliderTrack" | "channelSliderThumb" | "channelSliderValueText" | "swatchGroup" | "swatch" | "swatchIndicator" | "swatchTrigger" | "transparencyGrid" | "trigger" | "positioner" | "formatSelect" | "formatTrigger" | "valueSwatch" | "valueText" | "view" | "channelInput" | "eyeDropperTrigger"
+
 export type ColorPickerVariantProps = {
   [key in keyof ColorPickerVariant]?: ConditionalValue<ColorPickerVariant[key]> | undefined
 }
 
 export interface ColorPickerRecipe {
+  __slot: ColorPickerSlot
   __type: ColorPickerVariantProps
-  (props?: ColorPickerVariantProps): Pretty<Record<"root" | "label" | "control" | "trigger" | "positioner" | "content" | "area" | "areaThumb" | "valueText" | "areaBackground" | "channelSlider" | "channelSliderLabel" | "channelSliderTrack" | "channelSliderThumb" | "channelSliderValueText" | "channelInput" | "transparencyGrid" | "swatchGroup" | "swatchTrigger" | "swatchIndicator" | "swatch" | "eyeDropperTrigger" | "formatTrigger" | "formatSelect" | "view", string>>
+  (props?: ColorPickerVariantProps): Pretty<Record<ColorPickerSlot, string>>
   raw: (props?: ColorPickerVariantProps) => ColorPickerVariantProps
   variantMap: ColorPickerVariantMap
   variantKeys: Array<keyof ColorPickerVariant>

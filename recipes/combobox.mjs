@@ -2,7 +2,8 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const comboboxDefaultVariants = {
-  "size": "md"
+  "size": "md",
+  "variant": "outline"
 }
 const comboboxCompoundVariants = []
 
@@ -12,24 +13,40 @@ const comboboxSlotNames = [
     "combobox__root"
   ],
   [
-    "clearTrigger",
-    "combobox__clearTrigger"
-  ],
-  [
-    "content",
-    "combobox__content"
-  ],
-  [
-    "control",
-    "combobox__control"
+    "label",
+    "combobox__label"
   ],
   [
     "input",
     "combobox__input"
   ],
   [
+    "control",
+    "combobox__control"
+  ],
+  [
+    "content",
+    "combobox__content"
+  ],
+  [
+    "positioner",
+    "combobox__positioner"
+  ],
+  [
+    "list",
+    "combobox__list"
+  ],
+  [
     "item",
     "combobox__item"
+  ],
+  [
+    "itemText",
+    "combobox__itemText"
+  ],
+  [
+    "itemIndicator",
+    "combobox__itemIndicator"
   ],
   [
     "itemGroup",
@@ -40,28 +57,20 @@ const comboboxSlotNames = [
     "combobox__itemGroupLabel"
   ],
   [
-    "itemIndicator",
-    "combobox__itemIndicator"
-  ],
-  [
-    "itemText",
-    "combobox__itemText"
-  ],
-  [
-    "label",
-    "combobox__label"
-  ],
-  [
-    "list",
-    "combobox__list"
-  ],
-  [
-    "positioner",
-    "combobox__positioner"
+    "indicatorGroup",
+    "combobox__indicatorGroup"
   ],
   [
     "trigger",
     "combobox__trigger"
+  ],
+  [
+    "clearTrigger",
+    "combobox__clearTrigger"
+  ],
+  [
+    "empty",
+    "combobox__empty"
   ]
 ]
 const comboboxSlotFns = /* @__PURE__ */ comboboxSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, comboboxDefaultVariants, getSlotCompoundVariant(comboboxCompoundVariants, slotName))])
@@ -71,6 +80,7 @@ const comboboxFn = memo((props = {}) => {
 })
 
 const comboboxVariantKeys = [
+  "variant",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...comboboxDefaultVariants, ...compact(variants) })
@@ -79,12 +89,20 @@ export const combobox = /* @__PURE__ */ Object.assign(comboboxFn, {
   __recipe__: false,
   __name__: 'combobox',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: comboboxVariantKeys,
   variantMap: {
+  "variant": [
+    "outline",
+    "surface",
+    "subtle"
+  ],
   "size": [
+    "xs",
     "sm",
     "md",
-    "lg"
+    "lg",
+    "xl"
   ]
 },
   splitVariantProps(props) {

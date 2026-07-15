@@ -3,19 +3,36 @@ import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
 const badgeFn = /* @__PURE__ */ createRecipe('badge', {
   "variant": "subtle",
-  "size": "md"
+  "size": "md",
+  "colorPalette": "gray"
 }, [])
 
 const badgeVariantMap = {
+  "colorPalette": [
+    "success",
+    "error",
+    "warning",
+    "blue",
+    "green",
+    "red",
+    "orange",
+    "gray",
+    "cyan",
+    "amber",
+    "purple"
+  ],
   "variant": [
     "solid",
     "subtle",
+    "surface",
     "outline"
   ],
   "size": [
     "sm",
     "md",
-    "lg"
+    "lg",
+    "xl",
+    "2xl"
   ]
 }
 

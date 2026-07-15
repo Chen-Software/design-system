@@ -1,9 +1,27 @@
 import { memo, splitProps } from '../helpers.mjs';
 import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
-const linkFn = /* @__PURE__ */ createRecipe('link', {}, [])
+const linkFn = /* @__PURE__ */ createRecipe('link', {
+  "variant": "underline",
+  "colorPalette": "blue"
+}, [])
 
-const linkVariantMap = {}
+const linkVariantMap = {
+  "colorPalette": [
+    "blue",
+    "green",
+    "red",
+    "orange",
+    "gray",
+    "cyan",
+    "amber",
+    "purple"
+  ],
+  "variant": [
+    "underline",
+    "plain"
+  ]
+}
 
 const linkVariantKeys = Object.keys(linkVariantMap)
 

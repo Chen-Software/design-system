@@ -3,18 +3,22 @@ import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
 const codeFn = /* @__PURE__ */ createRecipe('code', {
   "size": "md",
-  "variant": "outline"
+  "variant": "subtle"
 }, [])
 
 const codeVariantMap = {
   "variant": [
+    "solid",
+    "surface",
+    "subtle",
     "outline",
-    "ghost"
+    "plain"
   ],
   "size": [
     "sm",
     "md",
-    "lg"
+    "lg",
+    "xl"
   ]
 }
 

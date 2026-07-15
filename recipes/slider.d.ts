@@ -7,19 +7,30 @@ interface SliderVariant {
  * @default "md"
  */
 size: "sm" | "md" | "lg"
+/**
+ * @default "outline"
+ */
+variant: "outline"
+/**
+ * @default "horizontal"
+ */
+orientation: "vertical" | "horizontal"
 }
 
 type SliderVariantMap = {
   [key in keyof SliderVariant]: Array<SliderVariant[key]>
 }
 
+type SliderSlot = "root" | "label" | "control" | "track" | "range" | "markerGroup" | "marker" | "markerIndicator" | "thumb" | "valueText"
+
 export type SliderVariantProps = {
   [key in keyof SliderVariant]?: ConditionalValue<SliderVariant[key]> | undefined
 }
 
 export interface SliderRecipe {
+  __slot: SliderSlot
   __type: SliderVariantProps
-  (props?: SliderVariantProps): Pretty<Record<"root" | "label" | "thumb" | "valueText" | "track" | "range" | "control" | "markerGroup" | "marker", string>>
+  (props?: SliderVariantProps): Pretty<Record<SliderSlot, string>>
   raw: (props?: SliderVariantProps) => SliderVariantProps
   variantMap: SliderVariantMap
   variantKeys: Array<keyof SliderVariant>

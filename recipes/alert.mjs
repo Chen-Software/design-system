@@ -1,7 +1,11 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const alertDefaultVariants = {}
+const alertDefaultVariants = {
+  "size": "md",
+  "status": "info",
+  "variant": "subtle"
+}
 const alertCompoundVariants = []
 
 const alertSlotNames = [
@@ -18,8 +22,8 @@ const alertSlotNames = [
     "alert__description"
   ],
   [
-    "icon",
-    "alert__icon"
+    "indicator",
+    "alert__indicator"
   ],
   [
     "title",
@@ -32,15 +36,39 @@ const alertFn = memo((props = {}) => {
   return Object.fromEntries(alertSlotFns.map(([slotName, slotFn]) => [slotName, slotFn.recipeFn(props)]))
 })
 
-const alertVariantKeys = []
+const alertVariantKeys = [
+  "size",
+  "variant",
+  "status"
+]
 const getVariantProps = (variants) => ({ ...alertDefaultVariants, ...compact(variants) })
 
 export const alert = /* @__PURE__ */ Object.assign(alertFn, {
   __recipe__: false,
   __name__: 'alert',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: alertVariantKeys,
-  variantMap: {},
+  variantMap: {
+  "size": [
+    "sm",
+    "md",
+    "lg"
+  ],
+  "variant": [
+    "solid",
+    "surface",
+    "subtle",
+    "outline"
+  ],
+  "status": [
+    "info",
+    "warning",
+    "success",
+    "error",
+    "neutral"
+  ]
+},
   splitVariantProps(props) {
     return splitProps(props, alertVariantKeys)
   },

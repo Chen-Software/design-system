@@ -3,18 +3,30 @@ import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
 const buttonFn = /* @__PURE__ */ createRecipe('button', {
   "variant": "solid",
-  "size": "md"
+  "size": "md",
+  "colorPalette": "gray"
 }, [])
 
 const buttonVariantMap = {
+  "colorPalette": [
+    "blue",
+    "green",
+    "red",
+    "orange",
+    "gray",
+    "cyan",
+    "amber",
+    "purple"
+  ],
   "variant": [
     "solid",
+    "surface",
+    "subtle",
     "outline",
-    "ghost",
-    "link",
-    "subtle"
+    "plain"
   ],
   "size": [
+    "2xs",
     "xs",
     "sm",
     "md",

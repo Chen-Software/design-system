@@ -2,6 +2,7 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const switchRecipeDefaultVariants = {
+  "variant": "solid",
   "size": "md"
 }
 const switchRecipeCompoundVariants = []
@@ -9,19 +10,23 @@ const switchRecipeCompoundVariants = []
 const switchRecipeSlotNames = [
   [
     "root",
-    "switchRecipe__root"
-  ],
-  [
-    "label",
-    "switchRecipe__label"
+    "switch__root"
   ],
   [
     "control",
-    "switchRecipe__control"
+    "switch__control"
   ],
   [
     "thumb",
-    "switchRecipe__thumb"
+    "switch__thumb"
+  ],
+  [
+    "label",
+    "switch__label"
+  ],
+  [
+    "indicator",
+    "switch__indicator"
   ]
 ]
 const switchRecipeSlotFns = /* @__PURE__ */ switchRecipeSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, switchRecipeDefaultVariants, getSlotCompoundVariant(switchRecipeCompoundVariants, slotName))])
@@ -31,6 +36,7 @@ const switchRecipeFn = memo((props = {}) => {
 })
 
 const switchRecipeVariantKeys = [
+  "variant",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...switchRecipeDefaultVariants, ...compact(variants) })
@@ -39,9 +45,14 @@ export const switchRecipe = /* @__PURE__ */ Object.assign(switchRecipeFn, {
   __recipe__: false,
   __name__: 'switchRecipe',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: switchRecipeVariantKeys,
   variantMap: {
+  "variant": [
+    "solid"
+  ],
   "size": [
+    "xs",
     "sm",
     "md",
     "lg"

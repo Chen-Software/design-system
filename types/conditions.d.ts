@@ -2,7 +2,7 @@
 import type { AnySelector, Selectors } from './selectors';
 
 export interface Conditions {
-	/** `@media (hover: hover) and (pointer: fine) &:is(:hover, [data-hover])` */
+	/** `&:not(:disabled):hover` */
 	"_hover": string
 	/** `&:is(:focus, [data-focus])` */
 	"_focus": string
@@ -10,27 +10,27 @@ export interface Conditions {
 	"_focusWithin": string
 	/** `&:is(:focus-visible, [data-focus-visible])` */
 	"_focusVisible": string
-	/** `&:is(:disabled, [disabled], [data-disabled])` */
+	/** `&:is(:disabled, [disabled], [data-disabled], [aria-disabled=true])` */
 	"_disabled": string
-	/** `&:is(:active, [data-active])` */
+	/** `&:not(:disabled):active` */
 	"_active": string
 	/** `&:visited` */
 	"_visited": string
 	/** `&:target` */
 	"_target": string
-	/** `&:is(:read-only, [data-read-only])` */
+	/** `&:is(:read-only, [data-read-only], [aria-readonly=true])` */
 	"_readOnly": string
 	/** `&:read-write` */
 	"_readWrite": string
 	/** `&:is(:empty, [data-empty])` */
 	"_empty": string
-	/** `&:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"])` */
+	/** `&:is(:checked, [data-checked], [data-state=checked], [aria-checked=true], [data-state=indeterminate])` */
 	"_checked": string
 	/** `&:enabled` */
 	"_enabled": string
 	/** `&:is([aria-expanded=true], [data-expanded], [data-state="expanded"])` */
 	"_expanded": string
-	/** `&[data-highlighted]` */
+	/** `&:is([data-highlighted])` */
 	"_highlighted": string
 	/** `&[data-complete]` */
 	"_complete": string
@@ -46,7 +46,7 @@ export interface Conditions {
 	"_firstLetter": string
 	/** `&::first-line` */
 	"_firstLine": string
-	/** `&::marker` */
+	/** `&::marker, &::-webkit-details-marker` */
 	"_marker": string
 	/** `&::selection` */
 	"_selection": string
@@ -80,7 +80,7 @@ export interface Conditions {
 	"_peerFocusWithin": string
 	/** `.peer:is(:focus-visible, [data-focus-visible]) ~ &` */
 	"_peerFocusVisible": string
-	/** `.peer:is(:disabled, [disabled], [data-disabled]) ~ &` */
+	/** `.peer:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) ~ &` */
 	"_peerDisabled": string
 	/** `.peer:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"]) ~ &` */
 	"_peerChecked": string
@@ -100,21 +100,21 @@ export interface Conditions {
 	"_groupFocusWithin": string
 	/** `.group:is(:focus-visible, [data-focus-visible]) &` */
 	"_groupFocusVisible": string
-	/** `.group:is(:disabled, [disabled], [data-disabled]) &` */
+	/** `.group:is(:disabled, [disabled], [data-disabled], [aria-disabled=true]) &` */
 	"_groupDisabled": string
 	/** `.group:is(:checked, [data-checked], [aria-checked=true], [data-state="checked"]) &` */
 	"_groupChecked": string
 	/** `.group:is([aria-expanded=true], [data-expanded], [data-state="expanded"]) &` */
 	"_groupExpanded": string
-	/** `.group:is(:invalid, [data-invalid]) &` */
+	/** `.group:is(:invalid, [data-invalid], [aria-invalid=true]) &` */
 	"_groupInvalid": string
-	/** `&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state=indeterminate])` */
+	/** `&:is(:indeterminate, [data-indeterminate], [aria-checked=mixed], [data-state="indeterminate"])` */
 	"_indeterminate": string
 	/** `&:is(:required, [data-required], [aria-required=true])` */
 	"_required": string
 	/** `&:is(:valid, [data-valid])` */
 	"_valid": string
-	/** `&:is([aria-invalid])` */
+	/** `&:is(:user-invalid, [data-invalid], [aria-invalid=true])` */
 	"_invalid": string
 	/** `&:autofill` */
 	"_autofill": string
@@ -132,7 +132,7 @@ export interface Conditions {
 	"_selected": string
 	/** `&:is([aria-grabbed=true], [data-grabbed])` */
 	"_grabbed": string
-	/** `&:is([data-state="under-value"])` */
+	/** `&[data-state=under-value]` */
 	"_underValue": string
 	/** `&[data-state=over-value]` */
 	"_overValue": string
@@ -142,23 +142,23 @@ export interface Conditions {
 	"_default": string
 	/** `&:optional` */
 	"_optional": string
-	/** `&:is([open], [data-open], [data-state="open"])` */
+	/** `&:is([data-state=open])` */
 	"_open": string
-	/** `&:is([closed], [data-closed], [data-state="closed"])` */
+	/** `&:is([data-state=closed])` */
 	"_closed": string
 	/** `&:is(:fullscreen, [data-fullscreen])` */
 	"_fullscreen": string
 	/** `&:is([data-loading], [aria-busy=true])` */
 	"_loading": string
-	/** `&:is([hidden])` */
+	/** `&:is([hidden], [data-hidden])` */
 	"_hidden": string
-	/** `&:is([data-current])` */
+	/** `&:is([aria-current=true], [data-current])` */
 	"_current": string
 	/** `&[aria-current=page]` */
 	"_currentPage": string
 	/** `&[aria-current=step]` */
 	"_currentStep": string
-	/** `&:is([data-today])` */
+	/** `&[data-today]` */
 	"_today": string
 	/** `&[data-unavailable]` */
 	"_unavailable": string
@@ -194,9 +194,9 @@ export interface Conditions {
 	"_lessContrast": string
 	/** `@media (prefers-contrast: more)` */
 	"_moreContrast": string
-	/** `[dir=ltr] &` */
+	/** `:where([dir=ltr], :dir(ltr)) &` */
 	"_ltr": string
-	/** `[dir=rtl] &` */
+	/** `:where([dir=rtl], :dir(rtl)) &` */
 	"_rtl": string
 	/** `&::-webkit-scrollbar` */
 	"_scrollbar": string
@@ -212,12 +212,16 @@ export interface Conditions {
 	"_icon": string
 	/** `@starting-style` */
 	"_starting": string
-	/** `&:is([aria-collapsed=true], [data-collapsed], [data-state="collapsed"])` */
-	"_collapsed": string
-	/** `&:is([data-state="off"])` */
-	"_off": string
-	/** `&:is([data-state="on"])` */
+	/** `@media (scripting: none)` */
+	"_noscript": string
+	/** `@media (inverted-colors: inverted)` */
+	"_invertedColors": string
+	/** `&:is([data-state=on])` */
 	"_on": string
+	/** `&:is([data-pinned])` */
+	"_pinned": string
+	/** `& :where(svg, [data-part=icon])` */
+	"__icon": string
 	/** `@media screen and (min-width: 40rem)` */
 	"sm": string
 	/** `@media screen and (min-width: 40rem) and (max-width: 47.9975rem)` */
@@ -268,6 +272,30 @@ export interface Conditions {
 	"lgTo2xl": string
 	/** `@media screen and (min-width: 80rem) and (max-width: 95.9975rem)` */
 	"xlTo2xl": string
+	/** `@container  (min-width: 20rem)` */
+	"@/xs": string
+	/** `@container  (min-width: 24rem)` */
+	"@/sm": string
+	/** `@container  (min-width: 28rem)` */
+	"@/md": string
+	/** `@container  (min-width: 32rem)` */
+	"@/lg": string
+	/** `@container  (min-width: 36rem)` */
+	"@/xl": string
+	/** `@container  (min-width: 42rem)` */
+	"@/2xl": string
+	/** `@container  (min-width: 48rem)` */
+	"@/3xl": string
+	/** `@container  (min-width: 56rem)` */
+	"@/4xl": string
+	/** `@container  (min-width: 64rem)` */
+	"@/5xl": string
+	/** `@container  (min-width: 72rem)` */
+	"@/6xl": string
+	/** `@container  (min-width: 80rem)` */
+	"@/7xl": string
+	/** `@container  (min-width: 90rem)` */
+	"@/8xl": string
 	/** The base (=no conditions) styles to apply  */
 	"base": string
 }

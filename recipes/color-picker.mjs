@@ -1,109 +1,115 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const colorPickerDefaultVariants = {}
+const colorPickerDefaultVariants = {
+  "size": "md"
+}
 const colorPickerCompoundVariants = []
 
 const colorPickerSlotNames = [
   [
     "root",
-    "colorPicker__root"
+    "color-picker__root"
   ],
   [
     "label",
-    "colorPicker__label"
+    "color-picker__label"
   ],
   [
     "control",
-    "colorPicker__control"
-  ],
-  [
-    "trigger",
-    "colorPicker__trigger"
-  ],
-  [
-    "positioner",
-    "colorPicker__positioner"
+    "color-picker__control"
   ],
   [
     "content",
-    "colorPicker__content"
+    "color-picker__content"
   ],
   [
     "area",
-    "colorPicker__area"
-  ],
-  [
-    "areaThumb",
-    "colorPicker__areaThumb"
-  ],
-  [
-    "valueText",
-    "colorPicker__valueText"
+    "color-picker__area"
   ],
   [
     "areaBackground",
-    "colorPicker__areaBackground"
+    "color-picker__areaBackground"
+  ],
+  [
+    "areaThumb",
+    "color-picker__areaThumb"
   ],
   [
     "channelSlider",
-    "colorPicker__channelSlider"
+    "color-picker__channelSlider"
   ],
   [
     "channelSliderLabel",
-    "colorPicker__channelSliderLabel"
+    "color-picker__channelSliderLabel"
   ],
   [
     "channelSliderTrack",
-    "colorPicker__channelSliderTrack"
+    "color-picker__channelSliderTrack"
   ],
   [
     "channelSliderThumb",
-    "colorPicker__channelSliderThumb"
+    "color-picker__channelSliderThumb"
   ],
   [
     "channelSliderValueText",
-    "colorPicker__channelSliderValueText"
-  ],
-  [
-    "channelInput",
-    "colorPicker__channelInput"
-  ],
-  [
-    "transparencyGrid",
-    "colorPicker__transparencyGrid"
+    "color-picker__channelSliderValueText"
   ],
   [
     "swatchGroup",
-    "colorPicker__swatchGroup"
-  ],
-  [
-    "swatchTrigger",
-    "colorPicker__swatchTrigger"
-  ],
-  [
-    "swatchIndicator",
-    "colorPicker__swatchIndicator"
+    "color-picker__swatchGroup"
   ],
   [
     "swatch",
-    "colorPicker__swatch"
+    "color-picker__swatch"
   ],
   [
-    "eyeDropperTrigger",
-    "colorPicker__eyeDropperTrigger"
+    "swatchIndicator",
+    "color-picker__swatchIndicator"
   ],
   [
-    "formatTrigger",
-    "colorPicker__formatTrigger"
+    "swatchTrigger",
+    "color-picker__swatchTrigger"
+  ],
+  [
+    "transparencyGrid",
+    "color-picker__transparencyGrid"
+  ],
+  [
+    "trigger",
+    "color-picker__trigger"
+  ],
+  [
+    "positioner",
+    "color-picker__positioner"
   ],
   [
     "formatSelect",
-    "colorPicker__formatSelect"
+    "color-picker__formatSelect"
+  ],
+  [
+    "formatTrigger",
+    "color-picker__formatTrigger"
+  ],
+  [
+    "valueSwatch",
+    "color-picker__valueSwatch"
+  ],
+  [
+    "valueText",
+    "color-picker__valueText"
   ],
   [
     "view",
-    "colorPicker__view"
+    "color-picker__view"
+  ],
+  [
+    "channelInput",
+    "color-picker__channelInput"
+  ],
+  [
+    "eyeDropperTrigger",
+    "color-picker__eyeDropperTrigger"
   ]
 ]
 const colorPickerSlotFns = /* @__PURE__ */ colorPickerSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, colorPickerDefaultVariants, getSlotCompoundVariant(colorPickerCompoundVariants, slotName))])
@@ -112,15 +118,24 @@ const colorPickerFn = memo((props = {}) => {
   return Object.fromEntries(colorPickerSlotFns.map(([slotName, slotFn]) => [slotName, slotFn.recipeFn(props)]))
 })
 
-const colorPickerVariantKeys = []
+const colorPickerVariantKeys = [
+  "size"
+]
 const getVariantProps = (variants) => ({ ...colorPickerDefaultVariants, ...compact(variants) })
 
 export const colorPicker = /* @__PURE__ */ Object.assign(colorPickerFn, {
   __recipe__: false,
   __name__: 'colorPicker',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: colorPickerVariantKeys,
-  variantMap: {},
+  variantMap: {
+  "size": [
+    "sm",
+    "md",
+    "lg"
+  ]
+},
   splitVariantProps(props) {
     return splitProps(props, colorPickerVariantKeys)
   },

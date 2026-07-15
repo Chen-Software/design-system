@@ -3,20 +3,38 @@ import type { ConditionalValue } from '../types/index';
 import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface DialogVariant {
-  
+  /**
+ * @default "scale"
+ */
+motionPreset: "scale" | "slide-in-bottom" | "slide-in-top" | "slide-in-left" | "slide-in-right" | "none"
+/**
+ * @default "md"
+ */
+size: "xs" | "sm" | "md" | "lg" | "xl" | "cover" | "full"
+/**
+ * @default "center"
+ */
+placement: "center" | "top" | "bottom"
+/**
+ * @default "outside"
+ */
+scrollBehavior: "inside" | "outside"
 }
 
 type DialogVariantMap = {
   [key in keyof DialogVariant]: Array<DialogVariant[key]>
 }
 
+type DialogSlot = "backdrop" | "positioner" | "content" | "header" | "body" | "footer" | "title" | "description" | "closeTrigger"
+
 export type DialogVariantProps = {
   [key in keyof DialogVariant]?: ConditionalValue<DialogVariant[key]> | undefined
 }
 
 export interface DialogRecipe {
+  __slot: DialogSlot
   __type: DialogVariantProps
-  (props?: DialogVariantProps): Pretty<Record<"trigger" | "backdrop" | "positioner" | "content" | "title" | "description" | "closeTrigger", string>>
+  (props?: DialogVariantProps): Pretty<Record<DialogSlot, string>>
   raw: (props?: DialogVariantProps) => DialogVariantProps
   variantMap: DialogVariantMap
   variantKeys: Array<keyof DialogVariant>

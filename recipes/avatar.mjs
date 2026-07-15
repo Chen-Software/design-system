@@ -2,7 +2,9 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const avatarDefaultVariants = {
-  "size": "md"
+  "size": "md",
+  "shape": "full",
+  "variant": "subtle"
 }
 const avatarCompoundVariants = []
 
@@ -27,7 +29,9 @@ const avatarFn = memo((props = {}) => {
 })
 
 const avatarVariantKeys = [
-  "size"
+  "size",
+  "variant",
+  "shape"
 ]
 const getVariantProps = (variants) => ({ ...avatarDefaultVariants, ...compact(variants) })
 
@@ -35,15 +39,29 @@ export const avatar = /* @__PURE__ */ Object.assign(avatarFn, {
   __recipe__: false,
   __name__: 'avatar',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: avatarVariantKeys,
   variantMap: {
   "size": [
+    "full",
+    "2xs",
     "xs",
     "sm",
     "md",
     "lg",
     "xl",
     "2xl"
+  ],
+  "variant": [
+    "solid",
+    "surface",
+    "subtle",
+    "outline"
+  ],
+  "shape": [
+    "square",
+    "rounded",
+    "full"
   ]
 },
   splitVariantProps(props) {

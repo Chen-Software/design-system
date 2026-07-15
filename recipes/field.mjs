@@ -10,28 +10,32 @@ const fieldSlotNames = [
     "field__root"
   ],
   [
-    "errorText",
-    "field__errorText"
-  ],
-  [
-    "helperText",
-    "field__helperText"
+    "label",
+    "field__label"
   ],
   [
     "input",
     "field__input"
   ],
   [
-    "label",
-    "field__label"
+    "textarea",
+    "field__textarea"
   ],
   [
     "select",
     "field__select"
   ],
   [
-    "textarea",
-    "field__textarea"
+    "helperText",
+    "field__helperText"
+  ],
+  [
+    "errorText",
+    "field__errorText"
+  ],
+  [
+    "requiredIndicator",
+    "field__requiredIndicator"
   ]
 ]
 const fieldSlotFns = /* @__PURE__ */ fieldSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, fieldDefaultVariants, getSlotCompoundVariant(fieldCompoundVariants, slotName))])
@@ -47,6 +51,7 @@ export const field = /* @__PURE__ */ Object.assign(fieldFn, {
   __recipe__: false,
   __name__: 'field',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: fieldVariantKeys,
   variantMap: {},
   splitVariantProps(props) {

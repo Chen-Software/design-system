@@ -9,27 +9,27 @@ const segmentGroupCompoundVariants = []
 const segmentGroupSlotNames = [
   [
     "root",
-    "segmentGroup__root"
+    "segment-group__root"
   ],
   [
     "label",
-    "segmentGroup__label"
-  ],
-  [
-    "item",
-    "segmentGroup__item"
-  ],
-  [
-    "itemText",
-    "segmentGroup__itemText"
-  ],
-  [
-    "itemControl",
-    "segmentGroup__itemControl"
+    "segment-group__label"
   ],
   [
     "indicator",
-    "segmentGroup__indicator"
+    "segment-group__indicator"
+  ],
+  [
+    "item",
+    "segment-group__item"
+  ],
+  [
+    "itemText",
+    "segment-group__itemText"
+  ],
+  [
+    "itemControl",
+    "segment-group__itemControl"
   ]
 ]
 const segmentGroupSlotFns = /* @__PURE__ */ segmentGroupSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, segmentGroupDefaultVariants, getSlotCompoundVariant(segmentGroupCompoundVariants, slotName))])
@@ -39,7 +39,8 @@ const segmentGroupFn = memo((props = {}) => {
 })
 
 const segmentGroupVariantKeys = [
-  "size"
+  "size",
+  "fitted"
 ]
 const getVariantProps = (variants) => ({ ...segmentGroupDefaultVariants, ...compact(variants) })
 
@@ -47,11 +48,18 @@ export const segmentGroup = /* @__PURE__ */ Object.assign(segmentGroupFn, {
   __recipe__: false,
   __name__: 'segmentGroup',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: segmentGroupVariantKeys,
   variantMap: {
   "size": [
+    "xs",
     "sm",
-    "md"
+    "md",
+    "lg",
+    "xl"
+  ],
+  "fitted": [
+    "true"
   ]
 },
   splitVariantProps(props) {

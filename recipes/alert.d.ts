@@ -3,20 +3,34 @@ import type { ConditionalValue } from '../types/index';
 import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface AlertVariant {
-  
+  /**
+ * @default "md"
+ */
+size: "sm" | "md" | "lg"
+/**
+ * @default "subtle"
+ */
+variant: "solid" | "surface" | "subtle" | "outline"
+/**
+ * @default "info"
+ */
+status: "info" | "warning" | "success" | "error" | "neutral"
 }
 
 type AlertVariantMap = {
   [key in keyof AlertVariant]: Array<AlertVariant[key]>
 }
 
+type AlertSlot = "root" | "content" | "description" | "indicator" | "title"
+
 export type AlertVariantProps = {
   [key in keyof AlertVariant]?: ConditionalValue<AlertVariant[key]> | undefined
 }
 
 export interface AlertRecipe {
+  __slot: AlertSlot
   __type: AlertVariantProps
-  (props?: AlertVariantProps): Pretty<Record<"root" | "content" | "description" | "icon" | "title", string>>
+  (props?: AlertVariantProps): Pretty<Record<AlertSlot, string>>
   raw: (props?: AlertVariantProps) => AlertVariantProps
   variantMap: AlertVariantMap
   variantKeys: Array<keyof AlertVariant>

@@ -1,53 +1,59 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const fileUploadDefaultVariants = {}
+const fileUploadDefaultVariants = {
+  "size": "md"
+}
 const fileUploadCompoundVariants = []
 
 const fileUploadSlotNames = [
   [
     "root",
-    "fileUpload__root"
-  ],
-  [
-    "dropzone",
-    "fileUpload__dropzone"
-  ],
-  [
-    "item",
-    "fileUpload__item"
-  ],
-  [
-    "itemDeleteTrigger",
-    "fileUpload__itemDeleteTrigger"
-  ],
-  [
-    "itemGroup",
-    "fileUpload__itemGroup"
-  ],
-  [
-    "itemName",
-    "fileUpload__itemName"
-  ],
-  [
-    "itemPreview",
-    "fileUpload__itemPreview"
-  ],
-  [
-    "itemPreviewImage",
-    "fileUpload__itemPreviewImage"
-  ],
-  [
-    "itemSizeText",
-    "fileUpload__itemSizeText"
+    "file-upload__root"
   ],
   [
     "label",
-    "fileUpload__label"
+    "file-upload__label"
+  ],
+  [
+    "dropzone",
+    "file-upload__dropzone"
   ],
   [
     "trigger",
-    "fileUpload__trigger"
+    "file-upload__trigger"
+  ],
+  [
+    "item",
+    "file-upload__item"
+  ],
+  [
+    "itemGroup",
+    "file-upload__itemGroup"
+  ],
+  [
+    "itemName",
+    "file-upload__itemName"
+  ],
+  [
+    "itemPreview",
+    "file-upload__itemPreview"
+  ],
+  [
+    "itemPreviewImage",
+    "file-upload__itemPreviewImage"
+  ],
+  [
+    "itemSizeText",
+    "file-upload__itemSizeText"
+  ],
+  [
+    "itemDeleteTrigger",
+    "file-upload__itemDeleteTrigger"
+  ],
+  [
+    "clearTrigger",
+    "file-upload__clearTrigger"
   ]
 ]
 const fileUploadSlotFns = /* @__PURE__ */ fileUploadSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, fileUploadDefaultVariants, getSlotCompoundVariant(fileUploadCompoundVariants, slotName))])
@@ -56,15 +62,24 @@ const fileUploadFn = memo((props = {}) => {
   return Object.fromEntries(fileUploadSlotFns.map(([slotName, slotFn]) => [slotName, slotFn.recipeFn(props)]))
 })
 
-const fileUploadVariantKeys = []
+const fileUploadVariantKeys = [
+  "size"
+]
 const getVariantProps = (variants) => ({ ...fileUploadDefaultVariants, ...compact(variants) })
 
 export const fileUpload = /* @__PURE__ */ Object.assign(fileUploadFn, {
   __recipe__: false,
   __name__: 'fileUpload',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: fileUploadVariantKeys,
-  variantMap: {},
+  variantMap: {
+  "size": [
+    "sm",
+    "md",
+    "lg"
+  ]
+},
   splitVariantProps(props) {
     return splitProps(props, fileUploadVariantKeys)
   },

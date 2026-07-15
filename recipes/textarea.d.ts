@@ -4,20 +4,28 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface TextareaVariant {
   /**
+ * @default "surface"
+ */
+variant: "outline" | "surface" | "subtle" | "flushed"
+/**
  * @default "md"
  */
-size: "sm" | "md" | "lg" | "xl"
+size: "xs" | "sm" | "md" | "lg" | "xl"
+resize: "none" | "both" | "horizontal" | "vertical"
 }
 
 type TextareaVariantMap = {
   [key in keyof TextareaVariant]: Array<TextareaVariant[key]>
 }
 
+
+
 export type TextareaVariantProps = {
   [key in keyof TextareaVariant]?: ConditionalValue<TextareaVariant[key]> | undefined
 }
 
 export interface TextareaRecipe {
+  
   __type: TextareaVariantProps
   (props?: TextareaVariantProps): string
   raw: (props?: TextareaVariantProps) => TextareaVariantProps

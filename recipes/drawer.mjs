@@ -2,15 +2,12 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const drawerDefaultVariants = {
-  "variant": "right"
+  "placement": "end",
+  "size": "sm"
 }
 const drawerCompoundVariants = []
 
 const drawerSlotNames = [
-  [
-    "trigger",
-    "drawer__trigger"
-  ],
   [
     "backdrop",
     "drawer__backdrop"
@@ -24,18 +21,6 @@ const drawerSlotNames = [
     "drawer__content"
   ],
   [
-    "title",
-    "drawer__title"
-  ],
-  [
-    "description",
-    "drawer__description"
-  ],
-  [
-    "closeTrigger",
-    "drawer__closeTrigger"
-  ],
-  [
     "header",
     "drawer__header"
   ],
@@ -46,6 +31,18 @@ const drawerSlotNames = [
   [
     "footer",
     "drawer__footer"
+  ],
+  [
+    "title",
+    "drawer__title"
+  ],
+  [
+    "description",
+    "drawer__description"
+  ],
+  [
+    "closeTrigger",
+    "drawer__closeTrigger"
   ]
 ]
 const drawerSlotFns = /* @__PURE__ */ drawerSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, drawerDefaultVariants, getSlotCompoundVariant(drawerCompoundVariants, slotName))])
@@ -55,7 +52,8 @@ const drawerFn = memo((props = {}) => {
 })
 
 const drawerVariantKeys = [
-  "variant"
+  "size",
+  "placement"
 ]
 const getVariantProps = (variants) => ({ ...drawerDefaultVariants, ...compact(variants) })
 
@@ -63,11 +61,22 @@ export const drawer = /* @__PURE__ */ Object.assign(drawerFn, {
   __recipe__: false,
   __name__: 'drawer',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: drawerVariantKeys,
   variantMap: {
-  "variant": [
-    "left",
-    "right"
+  "size": [
+    "xs",
+    "sm",
+    "md",
+    "lg",
+    "xl",
+    "full"
+  ],
+  "placement": [
+    "start",
+    "end",
+    "top",
+    "bottom"
   ]
 },
   splitVariantProps(props) {

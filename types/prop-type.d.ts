@@ -4,6 +4,7 @@ import type { CssProperties } from './system-types';
 import type { Tokens } from '../tokens/index';
 
 export interface UtilityValues {
+	aspectRatio: Tokens["aspectRatios"];
 	zIndex: Tokens["zIndex"];
 	top: Tokens["spacing"];
 	left: Tokens["spacing"];
@@ -56,6 +57,12 @@ export interface UtilityValues {
 	outlineColor: Tokens["colors"];
 	outline: Tokens["borders"];
 	outlineOffset: Tokens["spacing"];
+	focusRing: "outside" | "inside" | "mixed" | "none";
+	focusVisibleRing: "outside" | "inside" | "mixed" | "none";
+	focusRingColor: Tokens["colors"];
+	focusRingOffset: Tokens["spacing"];
+	focusRingWidth: CssProperties["outlineWidth"];
+	focusRingStyle: CssProperties["outlineStyle"];
 	divideColor: Tokens["colors"];
 	divideStyle: CssProperties["borderStyle"];
 	width: "auto" | Tokens["sizes"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6" | "1/12" | "2/12" | "3/12" | "4/12" | "5/12" | "6/12" | "7/12" | "8/12" | "9/12" | "10/12" | "11/12" | "screen";
@@ -70,6 +77,7 @@ export interface UtilityValues {
 	minBlockSize: "auto" | Tokens["sizes"] | "svh" | "lvh" | "dvh" | "screen" | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6";
 	maxHeight: "auto" | Tokens["sizes"] | "svh" | "lvh" | "dvh" | "screen" | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6";
 	maxBlockSize: "auto" | Tokens["sizes"] | "svh" | "lvh" | "dvh" | "screen" | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6";
+	boxSize: "auto" | Tokens["sizes"] | "1/2" | "1/3" | "2/3" | "1/4" | "2/4" | "3/4" | "1/5" | "2/5" | "3/5" | "4/5" | "1/6" | "2/6" | "3/6" | "4/6" | "5/6" | "1/12" | "2/12" | "3/12" | "4/12" | "5/12" | "6/12" | "7/12" | "8/12" | "9/12" | "10/12" | "11/12" | "screen";
 	color: Tokens["colors"];
 	fontFamily: Tokens["fonts"];
 	fontSize: Tokens["fontSizes"];
@@ -82,11 +90,13 @@ export interface UtilityValues {
 	textIndent: Tokens["spacing"];
 	textShadow: Tokens["shadows"];
 	textShadowColor: Tokens["colors"];
+	WebkitTextFillColor: Tokens["colors"];
 	textWrap: "wrap" | "balance" | "nowrap";
 	truncate: boolean;
 	background: Tokens["colors"];
 	backgroundColor: Tokens["colors"];
 	backgroundGradient: "to-t" | "to-tr" | "to-r" | "to-br" | "to-b" | "to-bl" | "to-l" | "to-tl";
+	backgroundLinear: "to-t" | "to-tr" | "to-r" | "to-br" | "to-b" | "to-bl" | "to-l" | "to-tl";
 	textGradient: "to-t" | "to-tr" | "to-r" | "to-br" | "to-b" | "to-bl" | "to-l" | "to-tl";
 	gradientFrom: Tokens["colors"];
 	gradientTo: Tokens["colors"];
@@ -140,9 +150,10 @@ export interface UtilityValues {
 	transitionTimingFunction: Tokens["easings"];
 	transitionDelay: Tokens["durations"];
 	transitionDuration: Tokens["durations"];
-	transition: "all" | "common" | "background" | "colors" | "opacity" | "shadow" | "transform";
+	transitionProperty: "common" | "colors" | "size" | "position" | "background";
+	transition: "all" | "common" | "size" | "position" | "background" | "colors" | "opacity" | "shadow" | "transform";
 	animation: Tokens["animations"];
-	animationName: "fade-in" | "fade-out" | "slide-in" | "slide-out" | "slide-in-left" | "slide-out-left" | "slide-in-right" | "slide-out-right" | "collapse-in" | "collapse-out" | "fadeIn" | "fadeOut" | "skeleton-pulse" | "spin";
+	animationName: "ping" | "bounce" | "expand-height" | "collapse-height" | "expand-width" | "collapse-width" | "fade-in" | "fade-out" | "slide-from-left-full" | "slide-from-right-full" | "slide-from-top-full" | "slide-from-bottom-full" | "slide-to-left-full" | "slide-to-right-full" | "slide-to-top-full" | "slide-to-bottom-full" | "slide-from-top" | "slide-from-bottom" | "slide-from-left" | "slide-from-right" | "slide-to-top" | "slide-to-bottom" | "slide-to-left" | "slide-to-right" | "scale-in" | "scale-out" | "spin" | "bg-position" | "position" | "pulse" | "fade-in-up";
 	animationTimingFunction: Tokens["easings"];
 	animationDuration: Tokens["durations"];
 	animationDelay: Tokens["durations"];
@@ -194,8 +205,10 @@ export interface UtilityValues {
 	srOnly: boolean;
 	debug: boolean;
 	containerName: CssProperties["containerName"];
-	colorPalette: "current" | "black" | "white" | "transparent" | "red" | "red.light" | "red.dark" | "gray" | "gray.light" | "gray.dark" | "cyan" | "cyan.light" | "cyan.dark" | "bg" | "fg" | "border";
-	textStyle: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
+	colorPalette: "black" | "white" | "fg" | "border" | "canvas" | "error" | "blue" | "blue.solid.bg" | "blue.solid" | "blue.solid.fg" | "blue.subtle.bg" | "blue.subtle" | "blue.subtle.fg" | "blue.surface.bg" | "blue.surface" | "blue.surface.border" | "blue.surface.fg" | "blue.outline" | "blue.outline.bg" | "blue.outline.border" | "blue.outline.fg" | "blue.plain" | "blue.plain.bg" | "blue.plain.fg" | "cyan" | "cyan.solid.bg" | "cyan.solid" | "cyan.solid.fg" | "cyan.subtle.bg" | "cyan.subtle" | "cyan.subtle.fg" | "cyan.surface.bg" | "cyan.surface" | "cyan.surface.border" | "cyan.surface.fg" | "cyan.outline" | "cyan.outline.bg" | "cyan.outline.border" | "cyan.outline.fg" | "cyan.plain" | "cyan.plain.bg" | "cyan.plain.fg" | "gray" | "gray.solid.bg" | "gray.solid" | "gray.solid.fg" | "gray.subtle.bg" | "gray.subtle" | "gray.subtle.fg" | "gray.surface.bg" | "gray.surface" | "gray.surface.border" | "gray.surface.fg" | "gray.outline" | "gray.outline.bg" | "gray.outline.border" | "gray.outline.fg" | "gray.plain" | "gray.plain.bg" | "gray.plain.fg" | "green" | "green.solid.bg" | "green.solid" | "green.solid.fg" | "green.subtle.bg" | "green.subtle" | "green.subtle.fg" | "green.surface.bg" | "green.surface" | "green.surface.border" | "green.surface.fg" | "green.outline" | "green.outline.bg" | "green.outline.border" | "green.outline.fg" | "green.plain" | "green.plain.bg" | "green.plain.fg" | "orange" | "orange.solid.bg" | "orange.solid" | "orange.solid.fg" | "orange.subtle.bg" | "orange.subtle" | "orange.subtle.fg" | "orange.surface.bg" | "orange.surface" | "orange.surface.border" | "orange.surface.fg" | "orange.outline" | "orange.outline.bg" | "orange.outline.border" | "orange.outline.fg" | "orange.plain" | "orange.plain.bg" | "orange.plain.fg" | "purple" | "purple.solid.bg" | "purple.solid" | "purple.solid.fg" | "purple.subtle.bg" | "purple.subtle" | "purple.subtle.fg" | "purple.surface.bg" | "purple.surface" | "purple.surface.border" | "purple.surface.fg" | "purple.outline" | "purple.outline.bg" | "purple.outline.border" | "purple.outline.fg" | "purple.plain" | "purple.plain.bg" | "purple.plain.fg" | "red" | "red.solid.bg" | "red.solid" | "red.solid.fg" | "red.subtle.bg" | "red.subtle" | "red.subtle.fg" | "red.surface.bg" | "red.surface" | "red.surface.border" | "red.surface.fg" | "red.outline" | "red.outline.bg" | "red.outline.border" | "red.outline.fg" | "red.plain" | "red.plain.bg" | "red.plain.fg" | "amber" | "amber.solid.bg" | "amber.solid" | "amber.solid.fg" | "amber.subtle.bg" | "amber.subtle" | "amber.subtle.fg" | "amber.surface.bg" | "amber.surface" | "amber.surface.border" | "amber.surface.fg" | "amber.outline" | "amber.outline.bg" | "amber.outline.border" | "amber.outline.fg" | "amber.plain" | "amber.plain.bg" | "amber.plain.fg";
+	textStyle: "8xl" | "9xl" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "label";
+	layerStyle: "disabled";
+	animationStyle: "slide-fade-in" | "slide-fade-out" | "scale-fade-in" | "scale-fade-out" | "fade-in-up";
 }
 
 

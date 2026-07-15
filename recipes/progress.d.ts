@@ -4,22 +4,35 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ProgressVariant {
   /**
+ * @default "solid"
+ */
+variant: "solid" | "subtle"
+/**
+ * @default "rounded"
+ */
+shape: "square" | "rounded" | "full"
+striped: boolean
+animated: boolean
+/**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+size: "xs" | "sm" | "md" | "lg" | "xl"
 }
 
 type ProgressVariantMap = {
   [key in keyof ProgressVariant]: Array<ProgressVariant[key]>
 }
 
+type ProgressSlot = "root" | "label" | "track" | "range" | "valueText" | "view" | "circle" | "circleTrack" | "circleRange"
+
 export type ProgressVariantProps = {
   [key in keyof ProgressVariant]?: ConditionalValue<ProgressVariant[key]> | undefined
 }
 
 export interface ProgressRecipe {
+  __slot: ProgressSlot
   __type: ProgressVariantProps
-  (props?: ProgressVariantProps): Pretty<Record<"root" | "label" | "track" | "range" | "valueText" | "view" | "circle" | "circleTrack" | "circleRange", string>>
+  (props?: ProgressVariantProps): Pretty<Record<ProgressSlot, string>>
   raw: (props?: ProgressVariantProps) => ProgressVariantProps
   variantMap: ProgressVariantMap
   variantKeys: Array<keyof ProgressVariant>

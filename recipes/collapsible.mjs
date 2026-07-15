@@ -16,6 +16,10 @@ const collapsibleSlotNames = [
   [
     "content",
     "collapsible__content"
+  ],
+  [
+    "indicator",
+    "collapsible__indicator"
   ]
 ]
 const collapsibleSlotFns = /* @__PURE__ */ collapsibleSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, collapsibleDefaultVariants, getSlotCompoundVariant(collapsibleCompoundVariants, slotName))])
@@ -31,6 +35,7 @@ export const collapsible = /* @__PURE__ */ Object.assign(collapsibleFn, {
   __recipe__: false,
   __name__: 'collapsible',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: collapsibleVariantKeys,
   variantMap: {},
   splitVariantProps(props) {

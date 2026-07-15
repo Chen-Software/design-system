@@ -4,24 +4,31 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ButtonVariant {
   /**
+ * @default "gray"
+ */
+colorPalette: "blue" | "green" | "red" | "orange" | "gray" | "cyan" | "amber" | "purple"
+/**
  * @default "solid"
  */
-variant: "solid" | "outline" | "ghost" | "link" | "subtle"
+variant: "solid" | "surface" | "subtle" | "outline" | "plain"
 /**
  * @default "md"
  */
-size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
+size: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
 }
 
 type ButtonVariantMap = {
   [key in keyof ButtonVariant]: Array<ButtonVariant[key]>
 }
 
+
+
 export type ButtonVariantProps = {
   [key in keyof ButtonVariant]?: ConditionalValue<ButtonVariant[key]> | undefined
 }
 
 export interface ButtonRecipe {
+  
   __type: ButtonVariantProps
   (props?: ButtonVariantProps): string
   raw: (props?: ButtonVariantProps) => ButtonVariantProps

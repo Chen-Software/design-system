@@ -5,7 +5,8 @@ const textFn = /* @__PURE__ */ createRecipe('text', {}, [])
 
 const textVariantMap = {
   "variant": [
-    "heading"
+    "heading",
+    "label"
   ],
   "size": [
     "xs",

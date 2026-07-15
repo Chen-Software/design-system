@@ -2,6 +2,7 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const checkboxDefaultVariants = {
+  "variant": "solid",
   "size": "md"
 }
 const checkboxCompoundVariants = []
@@ -35,6 +36,7 @@ const checkboxFn = memo((props = {}) => {
 })
 
 const checkboxVariantKeys = [
+  "variant",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...checkboxDefaultVariants, ...compact(variants) })
@@ -43,8 +45,16 @@ export const checkbox = /* @__PURE__ */ Object.assign(checkboxFn, {
   __recipe__: false,
   __name__: 'checkbox',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: checkboxVariantKeys,
   variantMap: {
+  "variant": [
+    "solid",
+    "surface",
+    "subtle",
+    "outline",
+    "plain"
+  ],
   "size": [
     "sm",
     "md",

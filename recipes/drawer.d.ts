@@ -4,22 +4,29 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface DrawerVariant {
   /**
- * @default "right"
+ * @default "sm"
  */
-variant: "left" | "right"
+size: "xs" | "sm" | "md" | "lg" | "xl" | "full"
+/**
+ * @default "end"
+ */
+placement: "start" | "end" | "top" | "bottom"
 }
 
 type DrawerVariantMap = {
   [key in keyof DrawerVariant]: Array<DrawerVariant[key]>
 }
 
+type DrawerSlot = "backdrop" | "positioner" | "content" | "header" | "body" | "footer" | "title" | "description" | "closeTrigger"
+
 export type DrawerVariantProps = {
   [key in keyof DrawerVariant]?: ConditionalValue<DrawerVariant[key]> | undefined
 }
 
 export interface DrawerRecipe {
+  __slot: DrawerSlot
   __type: DrawerVariantProps
-  (props?: DrawerVariantProps): Pretty<Record<"trigger" | "backdrop" | "positioner" | "content" | "title" | "description" | "closeTrigger" | "header" | "body" | "footer", string>>
+  (props?: DrawerVariantProps): Pretty<Record<DrawerSlot, string>>
   raw: (props?: DrawerVariantProps) => DrawerVariantProps
   variantMap: DrawerVariantMap
   variantKeys: Array<keyof DrawerVariant>

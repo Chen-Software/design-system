@@ -6,20 +6,24 @@ interface SegmentGroupVariant {
   /**
  * @default "md"
  */
-size: "sm" | "md"
+size: "xs" | "sm" | "md" | "lg" | "xl"
+fitted: boolean
 }
 
 type SegmentGroupVariantMap = {
   [key in keyof SegmentGroupVariant]: Array<SegmentGroupVariant[key]>
 }
 
+type SegmentGroupSlot = "root" | "label" | "indicator" | "item" | "itemText" | "itemControl"
+
 export type SegmentGroupVariantProps = {
   [key in keyof SegmentGroupVariant]?: ConditionalValue<SegmentGroupVariant[key]> | undefined
 }
 
 export interface SegmentGroupRecipe {
+  __slot: SegmentGroupSlot
   __type: SegmentGroupVariantProps
-  (props?: SegmentGroupVariantProps): Pretty<Record<"root" | "label" | "item" | "itemText" | "itemControl" | "indicator", string>>
+  (props?: SegmentGroupVariantProps): Pretty<Record<SegmentGroupSlot, string>>
   raw: (props?: SegmentGroupVariantProps) => SegmentGroupVariantProps
   variantMap: SegmentGroupVariantMap
   variantKeys: Array<keyof SegmentGroupVariant>

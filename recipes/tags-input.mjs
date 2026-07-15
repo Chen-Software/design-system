@@ -2,50 +2,51 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const tagsInputDefaultVariants = {
-  "size": "md"
+  "size": "md",
+  "variant": "outline"
 }
 const tagsInputCompoundVariants = []
 
 const tagsInputSlotNames = [
   [
     "root",
-    "tagsInput__root"
+    "tags-input__root"
   ],
   [
     "label",
-    "tagsInput__label"
+    "tags-input__label"
   ],
   [
     "control",
-    "tagsInput__control"
+    "tags-input__control"
   ],
   [
     "input",
-    "tagsInput__input"
+    "tags-input__input"
   ],
   [
     "clearTrigger",
-    "tagsInput__clearTrigger"
+    "tags-input__clearTrigger"
   ],
   [
     "item",
-    "tagsInput__item"
+    "tags-input__item"
   ],
   [
     "itemPreview",
-    "tagsInput__itemPreview"
-  ],
-  [
-    "itemInput",
-    "tagsInput__itemInput"
+    "tags-input__itemPreview"
   ],
   [
     "itemText",
-    "tagsInput__itemText"
+    "tags-input__itemText"
+  ],
+  [
+    "itemInput",
+    "tags-input__itemInput"
   ],
   [
     "itemDeleteTrigger",
-    "tagsInput__itemDeleteTrigger"
+    "tags-input__itemDeleteTrigger"
   ]
 ]
 const tagsInputSlotFns = /* @__PURE__ */ tagsInputSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, tagsInputDefaultVariants, getSlotCompoundVariant(tagsInputCompoundVariants, slotName))])
@@ -55,6 +56,7 @@ const tagsInputFn = memo((props = {}) => {
 })
 
 const tagsInputVariantKeys = [
+  "variant",
   "size"
 ]
 const getVariantProps = (variants) => ({ ...tagsInputDefaultVariants, ...compact(variants) })
@@ -63,10 +65,19 @@ export const tagsInput = /* @__PURE__ */ Object.assign(tagsInputFn, {
   __recipe__: false,
   __name__: 'tagsInput',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: tagsInputVariantKeys,
   variantMap: {
+  "variant": [
+    "outline",
+    "subtle",
+    "surface"
+  ],
   "size": [
-    "md"
+    "xs",
+    "sm",
+    "md",
+    "lg"
   ]
 },
   splitVariantProps(props) {

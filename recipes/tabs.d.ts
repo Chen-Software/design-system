@@ -4,26 +4,30 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface TabsVariant {
   /**
- * @default "line"
- */
-variant: "enclosed" | "line" | "outline"
-/**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+size: "xs" | "sm" | "md" | "lg"
+/**
+ * @default "line"
+ */
+variant: "line" | "subtle" | "enclosed"
+fitted: boolean
 }
 
 type TabsVariantMap = {
   [key in keyof TabsVariant]: Array<TabsVariant[key]>
 }
 
+type TabsSlot = "root" | "list" | "trigger" | "content" | "indicator"
+
 export type TabsVariantProps = {
-  [key in keyof TabsVariant]?: TabsVariant[key] | undefined
+  [key in keyof TabsVariant]?: ConditionalValue<TabsVariant[key]> | undefined
 }
 
 export interface TabsRecipe {
+  __slot: TabsSlot
   __type: TabsVariantProps
-  (props?: TabsVariantProps): Pretty<Record<"root" | "list" | "trigger" | "content" | "indicator", string>>
+  (props?: TabsVariantProps): Pretty<Record<TabsSlot, string>>
   raw: (props?: TabsVariantProps) => TabsVariantProps
   variantMap: TabsVariantMap
   variantKeys: Array<keyof TabsVariant>

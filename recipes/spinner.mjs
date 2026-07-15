@@ -11,7 +11,9 @@ const spinnerVariantMap = {
     "sm",
     "md",
     "lg",
-    "xl"
+    "xl",
+    "2xl",
+    "inherit"
   ]
 }
 

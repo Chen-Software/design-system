@@ -2,15 +2,29 @@ import { memo, splitProps } from '../helpers.mjs';
 import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
 const textareaFn = /* @__PURE__ */ createRecipe('textarea', {
-  "size": "md"
+  "size": "md",
+  "variant": "surface"
 }, [])
 
 const textareaVariantMap = {
+  "variant": [
+    "outline",
+    "surface",
+    "subtle",
+    "flushed"
+  ],
   "size": [
+    "xs",
     "sm",
     "md",
     "lg",
     "xl"
+  ],
+  "resize": [
+    "none",
+    "both",
+    "horizontal",
+    "vertical"
   ]
 }
 

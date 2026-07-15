@@ -2,19 +2,19 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const toggleGroupDefaultVariants = {
-  "size": "md",
-  "variant": "outline"
+  "variant": "outline",
+  "size": "md"
 }
 const toggleGroupCompoundVariants = []
 
 const toggleGroupSlotNames = [
   [
     "root",
-    "toggleGroup__root"
+    "toggle-group__root"
   ],
   [
     "item",
-    "toggleGroup__item"
+    "toggle-group__item"
   ]
 ]
 const toggleGroupSlotFns = /* @__PURE__ */ toggleGroupSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, toggleGroupDefaultVariants, getSlotCompoundVariant(toggleGroupCompoundVariants, slotName))])
@@ -33,6 +33,7 @@ export const toggleGroup = /* @__PURE__ */ Object.assign(toggleGroupFn, {
   __recipe__: false,
   __name__: 'toggleGroup',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: toggleGroupVariantKeys,
   variantMap: {
   "variant": [

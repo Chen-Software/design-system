@@ -10,13 +10,16 @@ type PopoverVariantMap = {
   [key in keyof PopoverVariant]: Array<PopoverVariant[key]>
 }
 
+type PopoverSlot = "anchor" | "arrow" | "arrowTip" | "closeTrigger" | "content" | "description" | "indicator" | "positioner" | "title" | "trigger" | "header" | "body" | "footer"
+
 export type PopoverVariantProps = {
   [key in keyof PopoverVariant]?: ConditionalValue<PopoverVariant[key]> | undefined
 }
 
 export interface PopoverRecipe {
+  __slot: PopoverSlot
   __type: PopoverVariantProps
-  (props?: PopoverVariantProps): Pretty<Record<"arrow" | "arrowTip" | "anchor" | "trigger" | "indicator" | "positioner" | "content" | "title" | "description" | "closeTrigger", string>>
+  (props?: PopoverVariantProps): Pretty<Record<PopoverSlot, string>>
   raw: (props?: PopoverVariantProps) => PopoverVariantProps
   variantMap: PopoverVariantMap
   variantKeys: Array<keyof PopoverVariant>

@@ -4,24 +4,27 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface CodeVariant {
   /**
- * @default "outline"
+ * @default "subtle"
  */
-variant: "outline" | "ghost"
+variant: "solid" | "surface" | "subtle" | "outline" | "plain"
 /**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+size: "sm" | "md" | "lg" | "xl"
 }
 
 type CodeVariantMap = {
   [key in keyof CodeVariant]: Array<CodeVariant[key]>
 }
 
+
+
 export type CodeVariantProps = {
   [key in keyof CodeVariant]?: ConditionalValue<CodeVariant[key]> | undefined
 }
 
 export interface CodeRecipe {
+  
   __type: CodeVariantProps
   (props?: CodeVariantProps): string
   raw: (props?: CodeVariantProps) => CodeVariantProps

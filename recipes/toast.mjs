@@ -6,10 +6,6 @@ const toastCompoundVariants = []
 
 const toastSlotNames = [
   [
-    "group",
-    "toast__group"
-  ],
-  [
     "root",
     "toast__root"
   ],
@@ -43,6 +39,7 @@ export const toast = /* @__PURE__ */ Object.assign(toastFn, {
   __recipe__: false,
   __name__: 'toast',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: toastVariantKeys,
   variantMap: {},
   splitVariantProps(props) {

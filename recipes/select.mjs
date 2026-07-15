@@ -9,24 +9,44 @@ const selectCompoundVariants = []
 
 const selectSlotNames = [
   [
-    "label",
-    "select__label"
+    "root",
+    "select__root"
   ],
   [
-    "positioner",
-    "select__positioner"
+    "control",
+    "select__control"
   ],
   [
     "trigger",
     "select__trigger"
   ],
   [
+    "label",
+    "select__label"
+  ],
+  [
+    "valueText",
+    "select__valueText"
+  ],
+  [
     "indicator",
     "select__indicator"
   ],
   [
-    "clearTrigger",
-    "select__clearTrigger"
+    "indicatorGroup",
+    "select__indicatorGroup"
+  ],
+  [
+    "positioner",
+    "select__positioner"
+  ],
+  [
+    "content",
+    "select__content"
+  ],
+  [
+    "list",
+    "select__list"
   ],
   [
     "item",
@@ -49,24 +69,8 @@ const selectSlotNames = [
     "select__itemGroupLabel"
   ],
   [
-    "list",
-    "select__list"
-  ],
-  [
-    "content",
-    "select__content"
-  ],
-  [
-    "root",
-    "select__root"
-  ],
-  [
-    "control",
-    "select__control"
-  ],
-  [
-    "valueText",
-    "select__valueText"
+    "clearTrigger",
+    "select__clearTrigger"
   ]
 ]
 const selectSlotFns = /* @__PURE__ */ selectSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, selectDefaultVariants, getSlotCompoundVariant(selectCompoundVariants, slotName))])
@@ -85,16 +89,19 @@ export const select = /* @__PURE__ */ Object.assign(selectFn, {
   __recipe__: false,
   __name__: 'select',
   raw: (props) => props,
+  classNameMap: {},
   variantKeys: selectVariantKeys,
   variantMap: {
   "variant": [
     "outline",
-    "ghost"
+    "surface"
   ],
   "size": [
+    "xs",
     "sm",
     "md",
-    "lg"
+    "lg",
+    "xl"
   ]
 },
   splitVariantProps(props) {
